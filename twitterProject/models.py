@@ -2,11 +2,8 @@ from twitterProject import db,login_manager
 from flask_login import UserMixin
 from datetime import datetime
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User_mgmt.query.get(int(user_id))
 
-class User_mgmt(UserMixin, db.Model):
+class UserManagment(UserMixin, db.Model):
     id = db.Column(db.Integer,primary_key=True)
     username = db.Column(db.String(15),nullable=False,unique=True)
     email = db.Column(db.String(50),nullable=False,unique=True)
@@ -49,4 +46,4 @@ class Timeline(db.Model):
 class Bookmark(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     post_id = db.Column(db.Integer, db.ForeignKey('post.id'),default=None)
-    user_id = db.Column(db.Integer, db.ForeignKey('user_mgmt.id'),default=None)
+    user_id = db.Column(db.Integer, db.ForeignKey('usermanagment.id'),default=None)
