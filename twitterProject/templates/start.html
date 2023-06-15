@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/start.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="https://img.icons8.com/fluent/48/000000/twitter.png"/>
+</head>
+<body>
+    <div class="image-bg">
+        <div class="about">
+            <ul>
+                <li><img class="icons" src="https://image.flaticon.com/icons/svg/3176/3176330.svg" alt=""> Follow your interest</li>
+                <li><img src="https://image.flaticon.com/icons/svg/615/615075.svg" alt="" class="icons">Hear what people are talking about</li>
+                <li><img src="https://image.flaticon.com/icons/svg/3094/3094824.svg" alt="" class="icons">Join the conversation</li>
+            </ul>
+        </div>
+    </div>
+    <h1>Login/Register</h1>
+    <h2>Registration</h2>
+    <form method="POST">
+        {{ register_form.hidden_tag() }}
+        <p>
+            {{ register_form.username.label }}<br>
+            {{ register_form.username(size=20) }}<br>
+            {% for error in register_form.username.errors %}
+                <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
+        </p>
+        <p>
+            {{ register_form.email.label }}<br>
+            {{ register_form.email }}<br>
+            {% for error in register_form.email.errors %}
+                <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
+        </p>
+        <p>
+            {{ register_form.password.label }}<br>
+            {{ register_form.password(size=20) }}<br>
+            {% for error in register_form.password.errors %}
+                <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
+        </p>
+        <p>
+            {{ register_form.confirm_password.label }}<br>
+            {{ register_form.confirm_password(size=20) }}<br>
+            {% for error in register_form.confirm_password.errors %}
+                <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
+        </p>
+        <p>
+            {{ register_form.submit }}
+        </p>
+    </form>
+    <h2>Login</h2>
+    <form method="POST">
+        {{ login_form.hidden_tag() }}
+        <p>
+            {{ login_form.username.label }}<br>
+            {{ login_form.username(size=20) }}<br>
+            {% for error in login_form.username.errors %}
+                <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
+        </p>
+        <p>
+            {{ login_form.password.label }}<br>
+            {{ login_form.password(size=20) }}<br>
+            {% for error in login_form.password.errors %}
+                <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
+        </p>
+        <p>
+            {{ login_form.submit }}
+        </p>
+    </form>
+</body>
+</html>
